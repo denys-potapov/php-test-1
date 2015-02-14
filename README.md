@@ -1,5 +1,10 @@
 # PHP Task
 
+Run server
+
+	php -S localhost:8000 -t public/
+
+
 1. Implement a comment system – a form, that allows you to submit comments, save them in the DB, and display the comments.
 
 2. Implement an event manager class. It should implement the singleton pattern, and support pluggable observers. The class will allow you to subscribe to events, fire events, and when the events are fired – call the appropriate callbacks.
