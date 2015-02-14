@@ -96,7 +96,6 @@ if (isset($_POST['name']) && isset($_POST['text'])) {
     $comment->author = $_POST['name'];
     $comment->text = $_POST['text'];
 
-    var_dump($comment);
     $services->get('comments')->save($comment);
 }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Repository for storing objects in DB
+ * Repository for storing and retriving  objects in DB
  *
  * @category Test
  * @package  Wired
@@ -10,13 +10,31 @@
  */
 class Wired_Repository
 {
-
+    /**
+     * Database connection
+     * 
+     * @var PDO
+     */
     protected $db;
 
+    /**
+     * Events manager
+     * 
+     * @var Wired_Events
+     */
     protected $events;
 
+    /**
+     * Tablke name for storing and retriving objects
+     * @var string
+     */
     protected $table;
 
+    /**
+     * Class name for returned objects
+     * 
+     * @var string
+     */
     protected $class;
 
     /**
