@@ -34,6 +34,36 @@ class Wired_Repository
     }
 
     /**
+     * Set events manager
+     * 
+     * @param Wired_Events $events events manager
+     *
+     * @return void 
+     */
+    public function setEventsManager($events)
+    {
+        $this->events = $events;
+    }
+
+    /**
+     * Fire model event
+     * 
+     * @param string  $event   event name
+     * @param mixed[] $payload array of event payload
+     * 
+     * @return void 
+     */
+    protected function fireEvent($event, $payload)
+    {
+        if (!isset($this->events)) {
+
+            return;
+        }
+
+        $this->events->fire('Model:' . $this->class . ':' . $event, $payload);
+    }
+
+    /**
      * Save object in DB
      *
      * @param mixed $object object for storing in db
@@ -42,6 +72,8 @@ class Wired_Repository
      */
     public function save($object)
     {
+        $this->fireEvent('beforeSave', [$object]);
+        
         $fields = array();
         $bind = array();
         foreach ($object as $field => $value) {
@@ -54,6 +86,8 @@ class Wired_Repository
                'VALUES (' . implode(', ', array_keys($bind)) . ')';
         $statement = $this->db->prepare($query);
         $statement->execute($bind);
+        
+        $this->fireEvent('afterSave', $object);
     }
 
     /**
