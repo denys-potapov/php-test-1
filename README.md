@@ -1,9 +1,20 @@
 # PHP Task
 
-Run server
+Create DB and load dump
+
+	mysql -h localhost -u user --password=root test < dump.sql 
+
+
+Change DB credentials in public/index.php and run application:
 
 	php -S localhost:8000 -t public/
 
+Run tests:
+
+	php phpunit.phar --bootstrap vendor/autoload.php tests/
+
+
+## Task
 
 1. Implement a comment system – a form, that allows you to submit comments, save them in the DB, and display the comments.
 
