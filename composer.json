@@ -1,0 +1,10 @@
+{
+    "name": "wired/test-php-1",
+    "require": {
+    },
+    "autoload": {
+    	 "psr-0": {
+    	 	"Wired_": "src/"
+    	 }
+    }
+}
