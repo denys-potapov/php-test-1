@@ -30,6 +30,7 @@ class Wired_ServicesTest extends PHPUnit_Framework_TestCase
      */
     public function testException()
     {
+        $services = new Wired_Services();
         $services->get('unknown');
     }
 }
