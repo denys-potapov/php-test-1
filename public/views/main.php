@@ -29,10 +29,44 @@
       <div class="jumbotron">
         <h1><i class="fa fa-comment"></i> comments</h1>
       </div>
-    
+      
+<?php 
+    $comments = $services->get('comments')->get();
+    foreach ($comments as $comment) {
+?>
+    <div class="row">
+        <blockquote>
+            <p><?php echo $comment->text ?></p>
+            <footer><?php echo htmlspecialchars($comment->author) ?></footer>
+        </blockquote>
     </div>
-    
+<?php } ?>
+   
+    <div class="row">
+        <h2>Add your opinion</h2>
+        <p>You can use smiles :) <3 0+</p>
+        <form class="form-horizontal" method="POST" action="/">
+          <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name="name" placeholder="your name" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Text</label>
+            <div class="col-sm-10">
+              <textarea class="form-control" rows="3" id="text" name="text" required></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default">Comment</button>
+            </div>
+          </div>
+        </form>
+    </div>
 
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
